@@ -1,17 +1,47 @@
 import express, { Express, Request, Response } from "express";
 
+import Todo from './types/Todo';
+import Database from "./database";
+
 const app: Express = express();
 const port: number = 3000;
 
-// Middleware to parse JSON requests
 app.use(express.json());
 
-// Define a simple route
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, TypeScript Express!");
+
+app.get("/todos", (req: Request, res: Response) => {
+	const database = new Database<Todo>('todos');
+	const data = database.selectAll();
+	res.send(JSON.stringify(data));
 });
 
-// Start the Express server
+app.get("/todos/:id", (req: Request, res: Response) => {
+	const id = Number(req.params.id);
+	const database = new Database<Todo>('todos');
+	const data = database.select(id);
+	res.send(JSON.stringify(data));
+});
+
+app.post("/todos", (req: Request, res: Response) => {
+	const database = new Database<Todo>('todos');
+	const data = database.insert(req.body);
+	res.send(JSON.stringify(data));
+});
+
+app.put("/todos", (req: Request, res: Response) => {
+	const database = new Database<Todo>('todos');
+	const data = database.update(req.body);
+	res.send(JSON.stringify(data));
+});
+
+app.delete("/todos/:id", (req: Request, res: Response) => {
+	const id = Number(req.params.id);
+	const database = new Database<Todo>('todos');
+	const data = database.delete(id);
+	res.send(JSON.stringify(data));
+});
+
+
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+	console.log(`Server is running on port ${port}`);
 });
