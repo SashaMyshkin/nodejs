@@ -1,46 +1,13 @@
-import express, { Express, Request, Response } from "express";
-
-import Todo from './types/Todo';
-import Database from "./database";
+import express, { Express } from "express";
+import todosRouter from "./routes/todos";
 
 const app: Express = express();
-const port: number = 3000;
+const port: number = 8080;
 
 app.use(express.json());
 
-
-app.get("/todos", (req: Request, res: Response) => {
-	const database = new Database<Todo>('todos');
-	const data = database.selectAll();
-	res.send(JSON.stringify(data));
-});
-
-app.get("/todos/:id", (req: Request, res: Response) => {
-	const id = Number(req.params.id);
-	const database = new Database<Todo>('todos');
-	const data = database.select(id);
-	res.send(JSON.stringify(data));
-});
-
-app.post("/todos", (req: Request, res: Response) => {
-	const database = new Database<Todo>('todos');
-	const data = database.insert(req.body);
-	res.send(JSON.stringify(data));
-});
-
-app.put("/todos", (req: Request, res: Response) => {
-	const database = new Database<Todo>('todos');
-	const data = database.update(req.body);
-	res.send(JSON.stringify(data));
-});
-
-app.delete("/todos/:id", (req: Request, res: Response) => {
-	const id = Number(req.params.id);
-	const database = new Database<Todo>('todos');
-	const data = database.delete(id);
-	res.send(JSON.stringify(data));
-});
-
+//Don't forget following slash!!!
+app.use('/api/todos', todosRouter);
 
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
