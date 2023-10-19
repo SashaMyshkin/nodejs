@@ -36,11 +36,11 @@ class Database<T extends dbObject> {
 
     insert(data:T):T|undefined{
 
-        const maxId = this.data.reduce((previous, current) => {
+        const generatedKey = this.data.reduce((previous, current) => {
             return (current.id > previous) ? current.id : previous;
         }, 0);
 
-        data.id = maxId + 1;
+        data.id = generatedKey + 1;
         this.data.push(data);
         this.saveData();
         this.reloadData();
