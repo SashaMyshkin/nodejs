@@ -1,19 +1,15 @@
-import dbObject from "./dbObject";
 
 
-class Todo implements dbObject{
 
-    id:number;
+class Todo{
+
+    private id?:number;
     title:string;
     description:string;
 
     constructor(id:number, title:string, description:string){
-        this.id = id;
         this.title = title;
         this.description = description;
-    }
-
-    setId(id:number){
         this.id = id;
     }
 
@@ -23,6 +19,10 @@ class Todo implements dbObject{
 
     setDescription(description:string){
         this.description = description;
+    }
+
+    getId(){
+        return this.id;
     }
 }
 

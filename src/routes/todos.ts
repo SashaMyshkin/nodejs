@@ -1,49 +1,50 @@
-import express, { Express, Request, Response, Router } from "express";
-import Database from "../Database";
-import Todo from "../types/Todo";
-
-// userRoutes.js
+import express, { Request, Response, Router } from "express";
+import database from "../db";
 
 const todosRouter:Router = express.Router();
 
-todosRouter.get("/", (req: Request, res: Response) => {
-    const q = req.query.q;
-    const database = new Database<Todo>('todos');
-	let data = database.selectAll();
+todosRouter.get("/", async (req: Request, res: Response) => {
+	const { data, error } = await database
+		.from('todos')
+		.select();
+	res.send(JSON.stringify(data));
+});
 
-    if(q && q !== "" && data ){
-        data = data.filter(elem => elem.title.toLowerCase().includes(q.toString().toLowerCase()));
-    }
+todosRouter.get("/:id", async (req: Request, res: Response) => {
+	const { data, error } = await database
+		.from('todos')
+		.select()
+		.eq('id', req.params["id"]);
+	res.send(JSON.stringify(data));
+});
+
+todosRouter.post("/", async (req: Request, res: Response) => {
+
+	const { title, description } = req.body;
+	const { data, error } = await database.from("todos").insert([{title:title, description:description}]).select();
+	res.send(JSON.stringify(data));
 	
+});
+
+todosRouter.put("/:id", async (req: Request, res: Response) => {
+	const { title, description } = req.body;
+
+	const { data, error } = await database
+	.from('todos')
+	.update({ title: title, description: description })
+	.eq('id', req.params["id"])
+	.select();
+
 	res.send(JSON.stringify(data));
 });
 
-todosRouter.get("/:id", (req: Request, res: Response) => {
-	const id = Number(req.params.id);
-	const database = new Database<Todo>('todos');
-	const data = database.select(id);
-	res.send(JSON.stringify(data));
-});
-
-todosRouter.post("/", (req: Request, res: Response) => {
-	const database = new Database<Todo>('todos');
-	const data = database.insert(req.body);
-	res.send(JSON.stringify(data));
-});
-
-todosRouter.put("/", (req: Request, res: Response) => {
-	const database = new Database<Todo>('todos');
-	const data = database.update(req.body);
-	res.send(JSON.stringify(data));
-});
-
-todosRouter.delete("/:id", (req: Request, res: Response) => {
-	const id = Number(req.params.id);
-	const database = new Database<Todo>('todos');
-	const data = database.delete(id);
-	res.send(JSON.stringify(data));
+todosRouter.delete("/:id", async (req: Request, res: Response) => {
+	const { error } = await database
+		.from('todos')
+		.delete()
+		.eq('id', req.params["id"]);
+	res.send(JSON.stringify(error));
 });
 
 
-// Export the router
 export default todosRouter;
