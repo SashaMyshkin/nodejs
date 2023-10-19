@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from "express";
 
 import Todo from './types/Todo';
-import Database from "./database";
+import Database from "./Database";
 
 const app: Express = express();
 const port: number = 3000;
