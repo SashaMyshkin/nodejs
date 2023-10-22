@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from "express";
-import { validateID, validateBodyProperties } from "../validation/todos";
-import { selectAll, selectByID, insert, update, deleteById } from "../controllers/todosConroller";
+import { validateID, validateBodyProperties } from "@validation/todos";
+import { selectAll, selectByID, insert, update, deleteById } from "@controllers/todosConroller";
 
 const todosRouter:Router = express.Router();
 

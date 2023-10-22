@@ -1,4 +1,4 @@
-import ErrorObject from "./ErrorObject";
+import ErrorObject from "@errors/ErrorObject";
 
 enum TodoErrorCodes{
     EMPTY_TITLE_PROPERTY,

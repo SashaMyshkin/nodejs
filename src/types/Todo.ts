@@ -1,6 +1,3 @@
-
-
-
 class Todo{
 
     private id?:number;
