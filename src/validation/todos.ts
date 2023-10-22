@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { TodoErrorCodes, TodoError }  from '@errors/TodoError';
-import { RequestError, RequestErrorCodes }  from '@errors/RequestError';
+import { TodoErrorCodes, TodoError }  from '#errors/TodoError';
+import { RequestError, RequestErrorCodes }  from '#errors/RequestError';
 
 function validateID(req:Request, res:Response, next:NextFunction){
 

@@ -1,4 +1,4 @@
-import ErrorObject from "@errors/ErrorObject";
+import ErrorObject from "#errors/ErrorObject";
 
 enum RequestErrorCodes {
     MISSING_PARAMETER,
