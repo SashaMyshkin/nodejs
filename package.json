@@ -20,8 +20,6 @@
 		"supabase": "^1.106.1"
 	},
 	"devDependencies": {
-		"nodemon": "^3.0.1",
-		"ts-node": "^10.9.1",
 		"typescript": "^5.2.2"
 	},
 	"imports": {
@@ -30,6 +28,7 @@
 		"#routes/*": "./build/routes/*.js",
 		"#errors/*": "./build/errors/*.js",
 		"#types/*": "./build/types/*.js",
-		"#validation/*": "./build/validation/*.js"
+		"#validation/*": "./build/validation/*.js",
+		"#utilis/*": "./build/utilis/*.js"
 	}
 }

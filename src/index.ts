@@ -1,10 +1,8 @@
 import express, { Express } from "express";
 import todosRouter from "#routes/todos";
-import dotenv from 'dotenv';
+import { config } from "dotenv";
 
-
-dotenv.config();
-
+config();
 
 const app: Express = express();
 const port: number = 8080;
