@@ -1,15 +1,12 @@
 import express, { Express } from "express";
 import todosRouter from "#routes/todos";
-import { config } from "dotenv";
-
-config();
 
 const app: Express = express();
-const port: number = 8080;
+const port: number = Number(process.env.PORT) || 3600;
 
 app.use(express.json());
 
-//Don't forget following slash!!!
+//Don't forget leading slash!!!
 app.use('/api/todos', todosRouter);
 
 app.listen(port, () => {
