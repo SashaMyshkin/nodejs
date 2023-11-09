@@ -1,2 +1,5 @@
 node_modules
 application
+.env
+Application.ts
+build
