@@ -1,18 +1,19 @@
 import express, { Request, Response, Router } from "express";
 import { validateID, validateBodyProperties } from "#validation/todos";
 import { selectAll, selectByID, insert, update, deleteById } from "#controllers/todosController";
+import { isAuthenticated } from "#root/validation/authentication";
 
-const todosRouter:Router = express.Router();
+const todosRouter: Router = express.Router();
 
-todosRouter.get("/", selectAll);
+todosRouter.get("/", isAuthenticated, selectAll);
 
-todosRouter.get("/:id", validateID, selectByID);
+todosRouter.get("/:id", isAuthenticated, validateID, selectByID);
 
-todosRouter.post("/", validateBodyProperties, insert);
+todosRouter.post("/", isAuthenticated, validateBodyProperties, insert);
 
-todosRouter.put("/:id", validateID, validateBodyProperties, update);
+todosRouter.put("/:id", isAuthenticated, validateID, validateBodyProperties, update);
 
-todosRouter.delete("/:id", validateID, deleteById);
+todosRouter.delete("/:id", isAuthenticated, validateID, deleteById);
 
 
 export default todosRouter;

@@ -6,7 +6,7 @@ const info: InfoObject = {
     contact: {
         "email": "homocalidus@gmail.com"
     },
-    version: "1.0.0"
+    version: "2.0.0"
 }
 
 export default info;

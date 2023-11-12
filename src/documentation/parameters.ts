@@ -10,3 +10,14 @@ export const id: ParameterObject = {
     }
 }
 
+export const token: ParameterObject = {
+    name: "Authorization",
+    in: "header",
+    required: true,
+    description: "The authorization token required to access the endpoint.",
+    schema: {
+        type: "string",
+        format: "bearer"
+    }
+}
+

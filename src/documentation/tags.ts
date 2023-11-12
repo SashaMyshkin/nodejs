@@ -1,3 +1,4 @@
 export enum TAGS {
-    TODO = "To do operations"
+    TODO = "To do operations",
+    AUTH = "Authentication"
 }

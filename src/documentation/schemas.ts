@@ -40,3 +40,17 @@ export const error: SchemaObject = {
     }
 }
 
+export const credentials: SchemaObject = {
+    type: "object",
+    properties: {
+        email: {
+            type: "string",
+            description: "User's Email Address."
+        },
+        password: {
+            type:"string",
+            description: "User's Password"
+        }
+    }
+}
+

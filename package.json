@@ -1,14 +1,13 @@
 {
 	"name": "nodejs",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "",
 	"private": true,
 	"type": "module",
 	"main": "index.js",
 	"scripts": {
 		"start": "node build/index.js",
-		"build": "tsc",
-		"restart": "tsc node build/index.js"
+		"build": "tsc"
 	},
 	"author": "Alexander Yovanovich",
 	"license": "ISC",
@@ -34,6 +33,6 @@
 		"#types/*": "./build/types/*.js",
 		"#validation/*": "./build/validation/*.js",
 		"#documentation/*": "./build/documentation/*.js",
-		"#main/*": "./*.json"
+		"#main/*": "*.json"
 	}
 }
