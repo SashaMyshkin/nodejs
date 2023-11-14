@@ -1,11 +1,8 @@
 import ErrorObject from "#errors/ErrorObject";
+import { AuthenticationErrorCodes } from "#errors/ErrorCodes";
 
-enum AuthenticationErrorCodes{
-    EMPTY_EMAIL_PROPERTY = "EMPTY_EMAIL_PROPERTY",
-    EMPTY_PASSWORD_PROPERTY = "EMPTY_PASSWORD_PROPERTY"
-}
 
-class AuthenticationError implements ErrorObject<AuthenticationErrorCodes> {
+export class AuthenticationError implements ErrorObject<AuthenticationErrorCodes> {
 
     errorCode: AuthenticationErrorCodes;
     errorMessage: string;
@@ -16,5 +13,3 @@ class AuthenticationError implements ErrorObject<AuthenticationErrorCodes> {
     }
     
 }
-
-export { AuthenticationError, AuthenticationErrorCodes }

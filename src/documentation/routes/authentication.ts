@@ -9,7 +9,25 @@ export const signUp: OperationObject = {
     requestBody: {
         "$ref": "#/components/requestBodies/usersCredentials"
     },
-    responses: {}
+    responses: {
+        "200": {
+            description: "Successful sign up",
+            content: {
+                "application/json": {
+                    schema: {
+                        type: "object",
+                        properties: {
+                            token: {
+                                type: "string",
+                                description: "Bearer token to be used for every request.",
+                                readOnly: true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 export const signIn: OperationObject = {
@@ -20,5 +38,23 @@ export const signIn: OperationObject = {
     requestBody: {
         "$ref": "#/components/requestBodies/usersCredentials"
     },
-    responses: {}
+    responses: {
+        "200": {
+            description: "Successful sign in",
+            content: {
+                "application/json": {
+                    schema: {
+                        type: "object",
+                        properties: {
+                            token: {
+                                type: "string",
+                                description: "Bearer token to be used for every request.",
+                                readOnly: true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

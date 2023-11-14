@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import database from "#root/db";
-import { RequestError, RequestErrorCodes } from '#root/errors/RequestError';
+import { RequestError } from '#root/errors/RequestError';
+import { RequestErrorCodes } from '#root/errors/ErrorCodes';
 
 
 export const signUp = async (req: Request, res: Response) => {
@@ -31,7 +32,7 @@ export const signIn = async (req: Request, res: Response) => {
         password: password,
     });
 
-    (!error) ? res.send(JSON.stringify(JSON.stringify({accessToken:data.session.access_token}))) : res.status(500).send(
+    (!error) ? res.send(JSON.stringify({accessToken:data.session.access_token})) : res.status(500).send(
         new RequestError(RequestErrorCodes.DATABASE_ERROR, error.message)
     )
 

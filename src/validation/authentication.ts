@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { RequestError, RequestErrorCodes }  from '#errors/RequestError';
-import { AuthenticationError, AuthenticationErrorCodes }  from '#errors/AuthenticationError';
+import { RequestError }  from '#errors/RequestError';
+import { AuthenticationError }  from '#errors/AuthenticationError';
 import database from '#root/db';
+import { AuthenticationErrorCodes, RequestErrorCodes } from '#root/errors/ErrorCodes';
 
 export function validateCredentials(req:Request, res:Response, next:NextFunction){
 

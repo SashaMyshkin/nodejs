@@ -20,10 +20,10 @@ const openApiObject: OpenAPIObject = {
     },
     components: {
         schemas: { todo, error, credentials },
-        parameters: { id: id, token:token },
+        parameters: { id, token },
         responses: { itemResponse, itemsResponse, badRequest, serverError },
-        requestBodies: { bodyOfToDoItem: bodyOfToDoItem, usersCredentials:  usersCredentials},
-        securitySchemes: {BearerAuth:BearerAuth}
+        requestBodies: { bodyOfToDoItem, usersCredentials},
+        securitySchemes: {BearerAuth}
     },
     security:[
         {
