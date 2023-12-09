@@ -1,9 +1,9 @@
 { 
 "compilerOptions": {
 	"target": "ES2016",
-	"lib": ["ESNext"],
+	"lib": ["ESNext", "DOM"],
 	"allowJs": true,
-	"skipLibCheck": true,
+	"skipLibCheck": true, 
 	"strict": true,
 	"noEmit": false,
 	"esModuleInterop": true,
@@ -17,7 +17,7 @@
 	"outDir": "./build",
 	"baseUrl": ".",
 	"paths": {
-		"#root/*": ["src/*"],
+		"#root/*": ["src/*.ts", "src/*.html"],
 		"#controllers/*": ["src/controllers/*"],
 		"#routes/*": ["src/routes/*"],
 		"#errors/*": ["src/errors/*"],
