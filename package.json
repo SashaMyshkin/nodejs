@@ -1,14 +1,13 @@
 {
 	"name": "nodejs",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "",
 	"private": true,
 	"type": "module",
 	"main": "index.js",
 	"scripts": {
 		"start": "node build/index.js",
-		"build": "tsc",
-		"restart": "tsc node build/index.js"
+		"build": "tsc"
 	},
 	"author": "Alexander Yovanovich",
 	"license": "ISC",
@@ -23,7 +22,10 @@
 		"swagger-ui-express": "^5.0.0"
 	},
 	"devDependencies": {
+		"@types/ncp": "^2.0.8",
 		"@types/swagger-ui-express": "^4.1.5",
+		"ncp": "^2.0.0",
+		"nodemon": "^3.0.1",
 		"typescript": "^5.2.2"
 	},
 	"imports": {
@@ -34,6 +36,7 @@
 		"#types/*": "./build/types/*.js",
 		"#validation/*": "./build/validation/*.js",
 		"#documentation/*": "./build/documentation/*.js",
-		"#main/*": "./*.json"
-	}
+		"#main/*": "*.html"
+	},
+	"nodemonConfig": {}
 }

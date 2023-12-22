@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import database from "#root/db";
-import { RequestError, RequestErrorCodes } from '#errors/RequestError';
+import { RequestError, } from '#errors/RequestError';
+import { RequestErrorCodes } from '#root/errors/ErrorCodes';
 
 const selectAll = async (req: Request, res: Response) => {
     const { data, error } = await database.from('todos').select();

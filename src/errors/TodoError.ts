@@ -1,11 +1,7 @@
 import ErrorObject from "#errors/ErrorObject";
+import { TodoErrorCodes } from "#errors/ErrorCodes";
 
-enum TodoErrorCodes{
-    EMPTY_TITLE_PROPERTY,
-    EMPTY_DESCRIPTION_PROPERTY
-}
-
-class TodoError implements ErrorObject<TodoErrorCodes> {
+export class TodoError implements ErrorObject<TodoErrorCodes> {
 
     errorCode: TodoErrorCodes;
     errorMessage: string;
@@ -16,8 +12,3 @@ class TodoError implements ErrorObject<TodoErrorCodes> {
     }
     
 }
-
-export {
-    TodoErrorCodes,
-    TodoError
-};

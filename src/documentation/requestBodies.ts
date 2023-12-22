@@ -11,3 +11,15 @@ export const bodyOfToDoItem: RequestBodyObject = {
         }
     }
 }
+
+export const usersCredentials:RequestBodyObject = {
+    description: "A JSON object that contains the details of the credentials.",
+    required: true,
+    content: {
+        "application/json":{
+            schema: {
+                "$ref": "#/components/schemas/credentials"
+            }
+        }
+    }
+}
